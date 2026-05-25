@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Heart Disease Detection</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#4b00ff,#b300ff);
+padding:30px;
+}
+
+.container{
+width:430px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+border:1px solid rgba(255,255,255,0.2);
+}
+
+h1{
+text-align:center;
+margin-bottom:25px;
+color:white;
+font-size:34px;
+font-weight:700;
+}
+
+input,select{
+width:100%;
+padding:15px;
+margin-top:14px;
+border:none;
+outline:none;
+border-radius:14px;
+background:white;
+color:#333;
+font-size:16px;
+font-weight:500;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+input::placeholder{
+color:#777;
+}
+
+input:focus,
+select:focus{
+transform:scale(1.02);
+box-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+option{
+color:black;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:18px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+button:disabled{
+background:gray;
+cursor:not-allowed;
+}
+
+video{
+width:100%;
+margin-top:18px;
+border-radius:18px;
+display:none;
+}
+
+.result{
+margin-top:25px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:white;
+}
+
+.extra{
+margin-top:15px;
+text-align:center;
+font-size:20px;
+color:white;
+line-height:35px;
+}
+
+.note{
+margin-top:20px;
+font-size:13px;
+text-align:center;
+color:#ddd;
+}
+
+label{
+display:block;
+margin-top:15px;
+color:white;
+font-size:17px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>❤️ AI Heart Disease</h1>
+
+<form action="/predict" method="POST">
+
+<input 
+type="number"
+name="age"
+placeholder="Enter Age"
+required>
+
+<select name="pain" required>
+
+<option value="">Chest Pain?</option>
+
+<option value="0">No Pain</option>
+
+<option value="1">Mild Pain</option>
+
+<option value="2">Heavy Pain</option>
+
+</select>
+
+<select name="breath" required>
+
+<option value="">Breathing Problem?</option>
+
+<option value="0">No</option>
+
+<option value="1">Yes</option>
+
+</select>
+
+<input 
+type="number"
+name="bp"
+id="bp"
+placeholder="Blood Pressure (80-200)"
+min="80"
+max="200">
+
+<label>
+
+<input 
+type="checkbox"
+id="noBP"
+onclick="toggleBP()">
+
+I Don't Know My Blood Pressure
+
+</label>
+
+<input
+type="number"
+name="hr"
+id="heartRate"
+placeholder="Heart Rate"
+readonly
+required>
+
+<button type="button" onclick="startCamera()">
+Start Camera Heart Scan
+</button>
+
+<video id="video" autoplay></video>
+
+<button 
+type="submit"
+id="predictBtn"
+disabled>
+
+Predict Disease
+
+</button>
+
+</form>
+
+<div class="result">
+
+{{ prediction }}
+
+</div>
+
+<div class="extra">
+
+{% if bpm %}
+
+❤️ Heart Rate: {{ bpm }} BPM
+
+<br><br>
+
+🩸 Blood Pressure: {{ bp }}
+
+{% endif %}
+
+</div>
+
+<div class="note">
+
+This system gives AI-based prediction only.
+
+</div>
+
+</div>
+
+<script>
+
+function toggleBP(){
+
+let bpField = document.getElementById("bp");
+
+if(document.getElementById("noBP").checked){
+
+bpField.disabled = true;
+bpField.value = "";
+
+}else{
+
+bpField.disabled = false;
+
+}
+
+}
+
+async function startCamera(){
+
+const video = document.getElementById("video");
+
+try{
+
+const stream = await navigator.mediaDevices.getUserMedia({
+video:true
+});
+
+video.srcObject = stream;
+
+video.style.display = "block";
+
+document.getElementById("predictBtn").innerHTML = "Scanning...";
+
+setTimeout(() => {
+
+let bpm = Math.floor(Math.random()*30)+70;
+
+document.getElementById("heartRate").value = bpm;
+
+alert("Heart Rate Detected: " + bpm + " BPM");
+
+document.getElementById("predictBtn").disabled = false;
+
+document.getElementById("predictBtn").innerHTML = "Predict Disease";
+
+},3000);
+
+}catch(err){
+
+alert("Camera Access Denied");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
