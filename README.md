@@ -56,7 +56,14 @@ This system provides AI-based risk prediction only and is not a substitute for p
 
 ---
 
-# 💻 Installation
+
+# ⚙️ How to Run Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/HeartDisease-Prediction.git
+git clone https://github.com/tanish0050/HeartDisease-Prediction.git
+
+cd HeartDisease-Prediction
+
+pip install -r requirements.txt
+
+python app.py
