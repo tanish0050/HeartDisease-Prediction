@@ -10,14 +10,11 @@ https://heartdisease-prediction-546z.onrender.com
 
 # 🚀 Features
 
-✅ Modern Glassmorphism UI  
 ✅ AI-Based Heart Disease Prediction  
 ✅ Camera Heart Rate Scan  
 ✅ Rural-Friendly System  
-✅ Blood Pressure Optional Mode  
-✅ Responsive Design  
+✅ Blood Pressure Optional Mode   
 ✅ Live Prediction Result  
-✅ Flask Backend Integration  
 ✅ Render Deployment Support  
 
 ---
