@@ -1,0 +1,62 @@
+# ❤️ AI Heart Disease Prediction System
+
+An AI-powered Heart Disease Prediction Web Application built using Flask, HTML, CSS, and JavaScript.
+
+This project helps users predict heart disease risk using symptoms, blood pressure, and heart rate detection.
+
+---
+
+# 🚀 Features
+
+✅ Modern Glassmorphism UI  
+✅ AI-Based Heart Disease Prediction  
+✅ Camera Heart Rate Scan  
+✅ Rural-Friendly System  
+✅ Blood Pressure Optional Mode  
+✅ Responsive Design  
+✅ Live Prediction Result  
+✅ Flask Backend Integration  
+✅ Render Deployment Support  
+
+---
+
+# 🛠 Technologies Used
+
+- Python
+- Flask
+- HTML5
+- CSS3
+- JavaScript
+- GitHub
+- Render
+
+---
+
+# 📷 Heart Rate Detection
+
+The system uses browser camera access to simulate heart rate detection for project demonstration purposes.
+
+---
+
+# 🧠 AI Prediction Logic
+
+The prediction system calculates risk based on:
+
+- Age
+- Chest Pain
+- Breathing Problem
+- Blood Pressure
+- Heart Rate
+
+---
+
+# ⚠️ Disclaimer
+
+This system provides AI-based risk prediction only and is not a substitute for professional medical diagnosis.
+
+---
+
+# 💻 Installation
+
+```bash
+git clone https://github.com/YOUR_USERNAME/HeartDisease-Prediction.git
